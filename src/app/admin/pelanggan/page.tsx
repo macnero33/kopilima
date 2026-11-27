@@ -1,3 +1,5 @@
+export const instant = false;
+
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/supabase-server";
 import PelangganClient from "./pelanggan-client";
