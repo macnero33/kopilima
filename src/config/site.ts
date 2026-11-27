@@ -13,4 +13,22 @@ export const siteConfig = {
     // Bisa diubah: jeda minimum satu stempel untuk satu pelanggan.
     stampCooldownMinutes: 10,
   },
+  // Tentang kedai
+  about: {
+    tagline: "Kopi to go di depan kampus.",
+    story: [
+      "Kopi Lima lahir dari kegemaran kopi dan keinginan membuat tempat nongkrong yang nyaman buat mahasiswa.",
+      "Kami pilih biji kopi lokal, sangrai dengan hati, dan sajikan dengan harga yang tetap waras buat kantong pelajar.",
+      "Setiap kopi yang kamu beli membantu kami tetap bisa buka dan nongkrong bareng kamu.",
+    ],
+  },
+  // Seni bulan ini
+  artOfTheMonth: {
+    title: "Seni Bulan Ini",
+    subtitle: "Karya lokal di dinding Kopi Lima",
+    artist: "Nama seniman belum diisi",
+    year: new Date().getFullYear(),
+    description: "Deskripsi karya seni belum diisi.",
+    imageUrl: "", // TODO: Isi URL gambar karya seni
+  },
 };
