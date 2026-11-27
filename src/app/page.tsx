@@ -42,6 +42,37 @@ export default function Home() {
           <div className="absolute bottom-2 right-0 rotate-[-5deg] rounded-xl border-2 border-coffee bg-yellow px-4 py-3 font-black shadow-[4px_4px_0_#2B1B14]">5 stempel → 1 gratis!</div>
         </div>
       </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <div className="grid gap-8 md:grid-cols-2">
+          <a href="/tentang" className="group relative rounded-[28px_18px_26px_16px] border-2 border-coffee/10 bg-white/70 p-8 overflow-hidden">
+            <div className="absolute inset-0 bg-orange/10 group-hover:bg-orange/20 transition-colors" />
+            <div className="relative z-10 flex items-center gap-4">
+              <div className="rounded-full bg-yellow p-3">
+                <span className="text-2xl">☕</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-black">Tentang Kopi Lima</h3>
+                <p className="font-bold text-coffee/75">Cerita, lokasi, & jam buka kedai</p>
+              </div>
+              <span className="absolute right-6 bottom-6 text-orange font-black text-sm">Lihat →</span>
+            </div>
+          </a>
+          <a href="/seni-bulan" className="group relative rounded-[28px_18px_26px_16px] border-2 border-coffee/10 bg-white/70 p-8 overflow-hidden">
+            <div className="absolute inset-0 bg-yellow/10 group-hover:bg-yellow/20 transition-colors" />
+            <div className="relative z-10 flex items-center gap-4">
+              <div className="rounded-full bg-orange p-3">
+                <span className="text-2xl">🎨</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-black">Seni Bulan Ini</h3>
+                <p className="font-bold text-coffee/75">Karya lokal di dinding kedai</p>
+              </div>
+              <span className="absolute right-6 bottom-6 text-orange font-black text-sm">Lihat →</span>
+            </div>
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

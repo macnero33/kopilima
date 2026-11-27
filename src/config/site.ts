@@ -5,7 +5,7 @@ export const siteConfig = {
   // TODO: Ganti jam buka setelah pemilik konfirmasi.
   hours: "Jam buka belum diisi",
   // TODO: Ganti dengan nomor WhatsApp aktif, format internasional tanpa tanda +.
-  whatsapp: "",
+  whatsapp: "085797267621",
   // TODO: Ganti dengan URL Google Maps tempat kedai.
   mapsUrl: "",
   loyalty: {
