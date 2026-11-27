@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+@theme inline {
+  --color-orange: #FF6A3D;
+  --color-yellow: #FFC93C;
+  --color-green: #3DBE8B;
+  --color-blue: #3D7BFF;
+  --color-pink: #FF7BB5;
+  --color-cream: #FFF4E0;
+  --color-coffee: #2B1B14;
+}
+
+:root {
+  background: #FFF4E0;
+  color: #2B1B14;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #FFC93C;
+  color: #2B1B14;
+}
+
+@keyframes stamp-pop {
+  0% {
+    transform: scale(.35) rotate(-20deg);
+  }
+  70% {
+    transform: scale(1.12) rotate(4deg);
+  }
+  100% {
+    transform: scale(1) rotate(-3deg);
+  }
+}
+
+.stamp-pop {
+  animation: stamp-pop .35s cubic-bezier(.2,.9,.3,1.2) both;
+}

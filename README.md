@@ -1,34 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kopi Lima
 
-## Getting Started
+Website mobile-first dan loyalty card digital untuk kedai Kopi Lima.
 
-First, run the development server:
+## Jalankan lokal
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup Supabase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Buat project gratis di Supabase.
+2. Buka SQL Editor, jalankan `supabase/001_loyalty.sql`.
+3. Di Authentication → Users, buat satu atau dua akun kasir/pemilik.
+4. Ambil URL dan anon key dari Project Settings → API.
+5. Ambil service role key; jangan pernah menaruhnya di variabel `NEXT_PUBLIC_*` atau kode browser.
+6. Isi `.env.local`:
 
-## Learn More
+```text
+NEXT_PUBLIC_SUPABASE_URL=https://PROJECT_REF.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
+```
 
-To learn more about Next.js, take a look at the following resources:
+RLS aktif pada `customers` dan `stamp_log`; tidak ada policy client. Semua tulis data dilakukan route server memakai service role.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Alur
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/daftar` untuk registrasi pelanggan.
+- `/kartu/[token]` untuk QR kartu; nomor WhatsApp tidak ditampilkan.
+- `/admin/login` untuk login kasir.
+- `/admin/scan` untuk scan dan tambah stempel.
+- `/admin/pelanggan` untuk cari, tebus, undo, riwayat, dan hapus pelanggan.
 
-## Deploy on Vercel
+Aturan: 10 menit cooldown, 5 stempel untuk satu kopi gratis, undo tersedia 5 menit. Nilai cooldown ada di `src/config/site.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Placeholder yang perlu diisi pemilik
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/config/site.ts`: alamat, jam buka, WhatsApp, dan link Maps.
+- `src/config/menu.ts`: nama, kategori, harga, dan tag menu.
+- `public/logo.svg`: logo asli pemilik.
+
+## Test dan build
+
+```bash
+npm test
+npm run lint
+npm run build
+```
+
+## Deploy Vercel
+
+1. Push proyek ke GitHub/GitLab.
+2. Import repository di Vercel.
+3. Tambahkan tiga environment variable Supabase di Project Settings → Environment Variables.
+4. Deploy.
+5. Di Supabase Auth → URL Configuration, tambahkan domain Vercel sebagai Site URL dan tambahkan redirect asal jika digunakan.
